@@ -9,7 +9,7 @@ python3 -m venv env
 virtualenv --version
 
 
-source source env/bin/activate
+source env/bin/activate
 
 pip3 install -r requirements.txt
 
