@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+    'graphene_django',
+
+
+    #User Applications
+    'authentication',
+    'network',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +86,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Database routers
+#DATABASE_ROUTERS = ['authentication.models.auth_model']
 
 
 # Password validation

@@ -9,5 +9,8 @@ source source env/bin/activate
 pip3 install -r requirements.txt
 pip3 freeze
 
-django-admin.py startproject core
+django-admin.py startproject src
+cd src
+
 django-admin.py startapp authentication
+django-admin.py startapp network
