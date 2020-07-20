@@ -133,7 +133,7 @@ STATIC_URL = '/static/'
 
 
 GRAPHENE = {
-    'SCHEMA': 'src.schema.schema'
+    'SCHEMA': 'core.schema.schema'
 }
 
 AUTH_USER_MODEL = 'authentication.AdmAccount'

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from authentication.models import AdmCustomer , AdmAccount
 
-# Register your models here.
+admin.site.register(AdmCustomer)
+admin.site.register(AdmAccount)
