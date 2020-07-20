@@ -40,10 +40,9 @@ INSTALLED_APPS = [
     'django_filters',
     'graphene_django',
 
-
     #User Applications
     'authentication',
-    'network',
+    #'network',
 ]
 
 MIDDLEWARE = [
@@ -80,15 +79,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'WFH',
+        'USER': 'bhushan',
+        'PASSWORD': 'wifi123#',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
-
-# Database routers
-#DATABASE_ROUTERS = ['authentication.models.auth_model']
 
 
 # Password validation
@@ -128,3 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+GRAPHENE = {
+    'SCHEMA': 'src.schema.schema'
+}
+
+AUTH_USER_MODEL = 'authentication.AdmAccount'

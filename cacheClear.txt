@@ -1,0 +1,27 @@
+1) (env) bhushan@bhushan src (master) $ ./manage.py sqlflush
+BEGIN;
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE `adm_account_groups`;
+TRUNCATE `adm_account_user_permissions`;
+TRUNCATE `adm_customer`;
+TRUNCATE `django_content_type`;
+TRUNCATE `adm_account`;
+TRUNCATE `django_session`;
+TRUNCATE `auth_permission`;
+TRUNCATE `django_admin_log`;
+TRUNCATE `auth_group`;
+TRUNCATE `auth_group_permissions`;
+SET FOREIGN_KEY_CHECKS = 1;
+COMMIT;
+
+2) Remove the all migrations files within your project
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
+
+
+3) python manage.py showmigrations
+
+4) Clear the migration history (please note that core is the name of my app):
+ python manage.py migrate --fake core zero
+
+5) 
