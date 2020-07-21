@@ -137,3 +137,10 @@ GRAPHENE = {
 }
 
 AUTH_USER_MODEL = 'authentication.AdmAccount'
+
+
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

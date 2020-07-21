@@ -1,0 +1,139 @@
+//Create new adm customer using mutation 
+
+GraphQL query for create customer
+
+mutation{
+  CreateAdmcustomerLink(
+      name: "Bhushan",
+      email : "admin@admin.com",
+      phone: "asdasdasd",
+      city: "Pune",
+      state: "MH",
+      zipcode : "46",
+      country : "IN",
+      currency : "INR",
+      status : "Activce",
+      customerType: "SUPERADMIN"
+  ){
+    customer{
+      id
+    	email
+    }
+  }
+}
+
+
+
+mutation{
+  CreateAdmcustomerLink(
+      name: "Bhushan",
+      email : "admin@admin.com",
+      phone: "asdasdasd",
+      city: "Pune",
+      state: "MH",
+      zipcode : "46",
+      country : "IN",
+      currency : "INR",
+      status : "Activce",
+      customerType: "ITADMIN"
+  ){
+    customer{
+      id
+    	email
+      phone
+      city
+      country
+      currency
+      zipcode
+      status
+    }
+  }
+}
+
+
+
+
+//Update adm customer using mutation 
+
+mutation{
+  UpdateAdmcustomerLink(
+    id: 1 , 
+    input : {
+      name: "This is for Testing Data"
+      phone : "89835978063"
+    }
+  ){
+	customerInstance{
+      id
+      email
+      phone
+      name
+      googleMapKey
+    }  
+  }
+}
+
+
+
+query{
+  account(id:1){
+    id
+    username
+    password
+  }
+}
+Output
+{
+  "data": {
+    "account": {
+      "id": "1",
+      "username": "admin",
+      "password": "pbkdf2_sha256$180000$uMwhqsiaaXiX$4+om9vXzhAuFsjBIc/JL/+dmISffI611kW5VRMCIJsU="
+    }
+  }
+}
+
+
+
+create token
+
+Request
+
+mutation{
+  tokenAuth(username:"admin",password:"admin"){
+    token
+  }
+}
+
+
+Response
+
+{
+  "data": {
+    "tokenAuth": {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTk1MzQxMzUwLCJvcmlnSWF0IjoxNTk1MzQxMDUwfQ.zylQUUoq5UglDsip81vaWxUYRjnDgfdcdc9pJiIl06M"
+    }
+  }
+}
+
+
+Verify token
+
+mutation{
+  verifyToken(token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTk1MzQxMzUwLCJvcmlnSWF0IjoxNTk1MzQxMDUwfQ.zylQUUoq5UglDsip81vaWxUYRjnDgfdcdc9pJiIl06M"){
+    payload
+  }
+}
+
+Response
+{
+  "data": {
+    "verifyToken": {
+      "payload": {
+        "username": "admin",
+        "exp": 1595341350,
+        "origIat": 1595341050
+      }
+    }
+  }
+}
