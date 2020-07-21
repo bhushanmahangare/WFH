@@ -27,7 +27,7 @@ class AdmCustomer(models.Model):
     logo_path = models.CharField(max_length=450, null=True, blank=True)
     home_page_url = models.CharField(max_length=450, null=True, blank=True)
     time_zone = models.CharField(max_length=20, null=True, blank=True)
-    time_zone_name = models.CharField(max_length=20, null=True, blank=True)
+    time_zone_name = models.CharField(max_length=50, null=True, blank=True)
     google_map_key = models.CharField(max_length=150, null=True, blank=True)
 
     class Meta:
