@@ -137,3 +137,162 @@ Response
     }
   }
 }
+
+
+
+
+Relay Query fetch dataquery 
+query {
+  listAdmcustomers {
+    edges {
+      node {
+        id,
+        name
+        email
+        state
+        status
+      }
+    }
+  }
+}
+
+Output
+
+{
+  "data": {
+    "listAdmcustomers": {
+      "edges": [
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjE=",
+            "name": "data",
+            "email": "wifi-soft@wifi-soft.com",
+            "state": "MH",
+            "status": "Active"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjI=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjM=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjQ=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjU=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjY=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjc=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjg=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjk=",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjEw",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        },
+        {
+          "node": {
+            "id": "QWRtQ3VzdG9tZXJOb2RlOjEx",
+            "name": "Bhushan",
+            "email": "admin@admin.com",
+            "state": "MH",
+            "status": "MH"
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+By using relay id pass and fetch data
+
+query {
+  # Graphene creates globally unique IDs for all objects.
+  # You may need to copy this value from the results of the first query
+  relayCustomer(id: "QWRtQ3VzdG9tZXJOb2RlOjk=") {
+    name
+    address
+    status
+    city
+    country
+    phone
+  }
+}
+
+Output
+{
+  "data": {
+    "relayCustomer": {
+      "name": "Bhushan",
+      "address": null,
+      "status": "MH",
+      "city": "Pune",
+      "country": "IN",
+      "phone": "asdasdasd"
+    }
+  }
+}
+
