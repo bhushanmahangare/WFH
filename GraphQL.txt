@@ -75,6 +75,27 @@ mutation{
 
 
 
+// Delete record by mutation
+mutation{
+  DeleteAdmcustomerLink(id:3){
+ 		id
+    name
+  }
+}
+
+Output
+{
+  "data": {
+    "DeleteAdmcustomerLink": {
+      "id": 3,
+      "name": "Bhushan"
+    }
+  }
+}
+
+
+
+
 query{
   account(id:1){
     id

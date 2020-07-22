@@ -142,8 +142,30 @@ class UpdateAdmCustomer(graphene.Mutation):
 
 
 
+class DeleteAdmCustomer(graphene.Mutation):
+
+    # Return values
+    id = graphene.Int()
+    name = graphene.String()
+
+    class Arguments:
+        id = graphene.Int()
+
+    def mutate(self, info , id):
+        customer = AdmCustomer.objects.get(id=id)
+        print("DEBUG: %s:%s" % (customer.id, customer.name))
+        customer.delete()
+
+        return DeleteAdmCustomer(
+            id=id,
+            name=customer.name
+        )
+
+
+
 class Mutation(graphene.ObjectType):
 
     Create_AdmCustomer_link = CreateAdmCustomer.Field()
     Update_AdmCustomer_link = UpdateAdmCustomer.Field()
+    Delete_AdmCustomer_link = DeleteAdmCustomer.Field()
     
