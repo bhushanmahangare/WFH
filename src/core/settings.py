@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     #User Applications
     'authentication',
-    #'network',
+    'network',
 ]
 
 MIDDLEWARE = [
