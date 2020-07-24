@@ -1,12 +1,17 @@
 import graphene
+import logging
+
 from graphene import relay, ObjectType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
 from authentication.models import AdmCustomer, AdmAccount
 
+logger = logging.getLogger(__name__)
+
 # The data is exposed in Nodes, so you must create one for the links.
 class AdmCustomerNode(DjangoObjectType):
+    logger.debug(f'Policy updater for policy id {DjangoObjectType}')
 
     class Meta:
         model = AdmCustomer

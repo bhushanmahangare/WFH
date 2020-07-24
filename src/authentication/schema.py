@@ -1,9 +1,13 @@
 # cookbook/ingredients/schema.py
 import graphene
+import logging
 
 from graphene_django.types import DjangoObjectType
 
 from authentication.models import AdmCustomer, AdmAccount
+
+logger = logging.getLogger(__name__)
+
 
 class AdmCustomerType(DjangoObjectType):
     class Meta:
@@ -35,6 +39,7 @@ class Query(object):
 
 
     def resolve_all_customers(self, info, **kwargs):
+        logger.debug(f'Resolve all customer funtion')
         return AdmCustomer.objects.all()
     
     def resolve_all_accounts(self, info, **kwargs):
@@ -71,6 +76,8 @@ class Query(object):
 
 
 class CreateAdmCustomer(graphene.Mutation):
+    
+    logger.debug(f'CreateAdmCustomer funtion')
 
     class Arguments:
         # The input arguments for this mutation

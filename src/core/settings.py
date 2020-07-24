@@ -144,3 +144,74 @@ AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+
+# LOGGING
+# https://docs.djangoproject.com/en/2.2/topics/logging/#configuring-logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'default': {
+            'format': '{asctime} {levelname} {name} {message}',
+            'style': '{'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'filters': [
+                'require_debug_true',
+            ],
+            'formatter': 'default',
+        },
+        'debug_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': '/tmp/wfh-backend-debug.log',
+            'filters': [
+                'require_debug_true',
+            ],
+            'formatter': 'default',
+        },
+        'django': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': '/tmp/wfh-django.log',
+            'filters': [
+                'require_debug_true',
+            ],
+            'formatter': 'default'
+        },
+   },
+    'loggers': {
+        'django': {
+            'handlers': [
+                'django',
+                'console',
+            ],
+            'level': 'DEBUG',
+        },
+        'authentication': {
+            'handlers': [
+                'debug_file',
+                'console',
+            ],
+            'level': 'DEBUG',
+        },
+        'network': {
+            'handlers': [
+                'debug_file',
+                'console',
+            ],
+            'level': 'DEBUG'
+        },
+    },
+}
