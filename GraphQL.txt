@@ -160,6 +160,31 @@ Response
 }
 
 
+Refresh token
+mutation {
+ refreshToken(token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTk1OTI2ODY5LCJvcmlnSWF0IjoxNTk1OTI2NTY5fQ.EljqQf3EEc5AvmjzxvmcCdrzZnCtqg7F-aDIXFZKY4g") {
+   token
+   payload
+ }
+}
+
+{
+  "data": {
+    "refreshToken": {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTk1OTI2ODkwLCJvcmlnSWF0IjoxNTk1OTI2NTY5fQ.WFmoZ_WxZLK0rEs-CRD40FZ7CtmtPbBLVT1x8J5Ca9w",
+      "payload": {
+        "username": "admin",
+        "exp": 1595926890,
+        "origIat": 1595926569
+      }
+    }
+  }
+}
+
+
+
+
+
 
 
 Relay Query fetch dataquery 
