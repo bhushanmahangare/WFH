@@ -19,6 +19,16 @@ class AdmAccountType(DjangoObjectType):
 
 class Query(object):
 
+    me = graphene.Field(AdmAccountType)
+    accounts = graphene.List(AdmAccountType)
+    
+    def resolve_me(self, info):
+        user = info.context.user
+        print(user)
+        if user.is_anonymous:
+            raise Exception('Authentication Failure!')
+        return user
+
     #Getting single objects
     customer = graphene.Field(
         AdmCustomerType,
