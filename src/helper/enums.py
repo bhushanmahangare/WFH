@@ -11,3 +11,11 @@ class CustomerTypes(Enum):
     ITADMIN = 'IT ADMIN'       # This user like customers in wifilan
     MANAGER = 'MANAGER'         # This user like resellers in wifilan
     SUBSCRIBER = 'SUBSCRIBER'   # This is new login method to end customer who used WFH solutions
+
+
+class TimeUnits(IntEnum):
+    SECOND = 1
+    MINUTE = 2
+    HOUR = 3
+    DAY = 4
+    WEEK = 5
