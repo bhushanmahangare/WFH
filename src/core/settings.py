@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     #User Applications
     'authentication',
     'network',
+    'smartap',
+    'report',
 ]
 
 MIDDLEWARE = [

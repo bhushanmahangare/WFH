@@ -2,10 +2,16 @@ import graphene
 import authentication.schema
 import authentication.schema_relay
 import network.schema
+import smartap.schema
 import graphql_jwt
 
 
-class Query( authentication.schema.Query,  authentication.schema_relay.Query, network.schema.Query, graphene.ObjectType ):
+class Query( 
+    authentication.schema.Query,  
+    authentication.schema_relay.Query, 
+    network.schema.Query, 
+    smartap.schema.Query,
+    graphene.ObjectType     ):
     # This class will inherit from multiple Queries
     # as we begin to add more apps to our project
     pass

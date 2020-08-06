@@ -18,8 +18,6 @@ class Query(object):
         name=graphene.String()
     )
 
-    all_locations = graphene.List(LocationType)
-
     def resolve_location(self, info, **kwargs):
         id = kwargs.get('id')
         name = kwargs.get('name')
@@ -28,6 +26,8 @@ class Query(object):
             return Location.object.get(pk=id)
         
         return None
+
+    all_locations = graphene.List(LocationType)
 
     def resolve_all_locations(self, info , **kwargs):
         return Location.objects.all()

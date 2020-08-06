@@ -1,5 +1,4 @@
 from django.contrib import admin
-from network.models  import Location, AP
+from network.models  import Location
 
 admin.site.register(Location)
-admin.site.register(AP)
