@@ -72,8 +72,8 @@ class AP( models.Model ):
     wifilanlocationid = models.IntegerField(db_column='WifilanLocationId')
     wifilanapid = models.IntegerField(null=False, blank=False, db_column='WifilanAPId')
 
-    createdon = models.DateTimeField(null=True, blank=True, db_column='CreatedOn')
-    modifiedon = models.DateTimeField(null=True, blank=True, db_column='ModifiedOn')
+    createdon = models.DateTimeField(auto_now_add=True, db_column='CreatedOn')
+    modifiedon = models.DateTimeField(auto_now=True, db_column='ModifiedOn')
     
     def save(self, *args, **kwargs):
         self.macaddress = self.macaddress.replace('-', ':').upper()
