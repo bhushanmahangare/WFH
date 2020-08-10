@@ -342,3 +342,37 @@ Output
   }
 }
 
+
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Smartap =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+mutation{
+  CreateApLink( 
+    macaddress:"CD-B3-D3-69-5C-DC",
+    wifilanserverid: 1,
+    wifilancustomerid: 1,
+    wifilanlocationid: 1,
+    wifilanapid: 1
+  	)
+  {
+    ap {
+      id,
+      macaddress,
+      wifilanserverid
+    }
+  }
+}
+
+
+{
+  "data": {
+    "CreateApLink": {
+      "ap": {
+        "id": "5",
+        "macaddress": "CD:B3:D3:69:5C:DC",
+        "wifilanserverid": 1
+      }
+    }
+  }
+}

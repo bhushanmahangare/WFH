@@ -9,6 +9,7 @@ from graphene_django.types import DjangoObjectType
 
 # PROJECT IMPORTS
 from smartap.models import AP
+from helper import controlcenterutils
 
 
 logger = logging.getLogger(__name__)
@@ -62,29 +63,15 @@ class CreateAP(graphene.Mutation):
         wifilanlocationid = graphene.Int(required=True)
         wifilanapid = graphene.Int(required=True)
         
+
     # The class attributes define the response of the mutation
     ap = graphene.Field(APType)
 
     @staticmethod
     def mutate(self, info, macaddress, wifilanserverid ,wifilancustomerid, wifilanlocationid, wifilanapid):
         try:
-
-            '''response = get_vehicle_info(reg_no)
-
-            if response:
-                cache_data = VehicleCache(registration_number=reg_no, 
-                                        details=response)
-                cache_data.save()
-                parsed_response = self.parse_vehicle_data(reg_no, response)
-                AGENT = Agent.objects.get(username='shailesh')
-                vehicle_instance = Vehicle.objects.create(agent=AGENT, **parsed_response.get('vehicleInfo'))
-                customer_instance = Customer.objects.create(vehicle_id=vehicle_instance.id, **parsed_response.get('customerInfo'))
-                policy_instance = Policy.objects.create(vehicle_id=vehicle_instance.id, **parsed_response.get('policyInfo'))
-                parsed_response.get('vehicleInfo').update({'id': vehicle_instance.id})
-                parsed_response.get('customerInfo').update({'id': customer_instance.id})
-                parsed_response.get('policyInfo').update({'id': policy_instance.id})                
-                return parsed_response'''
-
+            '''response = ControlCenterUtils.addAccessPointInControlCenter(macaddress,wifilanserverid)
+            if response:'''
 
             ap = AP( macaddress=macaddress ,wifilanserverid=wifilanserverid , wifilancustomerid=wifilancustomerid , wifilanlocationid=wifilanlocationid, wifilanapid=wifilanapid)
 
