@@ -20,7 +20,6 @@ class AP( models.Model ):
     reboot = models.BooleanField(null=True, blank=True, default=0, db_column='Reboot')
     speedtest = models.BooleanField(null=True, blank=True, default=0, db_column='SpeedTest')
     
-    
     radio1channel = models.BooleanField(null=True, blank=True, default=0, db_column='Radio1Channel')
     radio2channel = models.BooleanField(null=True, blank=True, default=0, db_column='Radio2Channel')
     radio3channel = models.BooleanField(null=True, blank=True, default=0, db_column='Radio3Channel')
@@ -80,6 +79,7 @@ class AP( models.Model ):
         self.macaddress = self.macaddress.replace('-', ':').upper()
         return super(AP, self).save(*args, **kwargs)
 
-
     class Meta:
+        # app_label helps django to recognize your db
+        app_label = 'smartap'
         db_table = "ap"

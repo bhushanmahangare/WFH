@@ -81,8 +81,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -90,9 +88,37 @@ DATABASES = {
         'USER': 'bhushan',
         'PASSWORD': 'wifi123#',
         'HOST': 'localhost',
-        'PORT': ''
+        #'CONN_MAX_AGE': '500',
+        'OPTIONS': {
+            'autocommit' : True,
+            'init_command': "SET sql_mode='STRICT_ALL_TABLES'",
+            'isolation_level': 'read committed',
+        },
+        'Test': {
+            'DEPENDENCIES' : [],
+        },
+    },
+    'smartap': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Test',
+        'USER': 'bhushan',
+        'PASSWORD': 'wifi123#',
+        'HOST': 'localhost',
+        #'CONN_MAX_AGE': 500,
+        'OPTIONS': {
+            'autocommit': True,
+            'init_command': "SET sql_mode='STRICT_ALL_TABLES'",
+            'isolation_level': 'read uncommitted',
+        },
+        'TEST': {
+            'DEPENDENCIES': [],
+        },
+        #'INITIAL_SQL_FILE_PATH': '/root/wifilan.sql',
     }
 }
+
+# Database routers
+DATABASE_ROUTERS = ['core.dbrouter.DBRouter']
 
 
 # Password validation
