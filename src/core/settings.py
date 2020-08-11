@@ -248,3 +248,9 @@ LOGGING = {
         },
     },
 }
+
+
+
+WIFILAN_SERVER_ID = 24
+CONTROL_CENTER_URL =  "http://controlcenter.wifi-soft.com/api/remote-ap-operations.php"
+WIFILAN_SERVER_AUTH_KEY = "8kaiWUJIrW";

@@ -9,7 +9,7 @@ from graphene_django.types import DjangoObjectType
 
 # PROJECT IMPORTS
 from smartap.models import AP
-from helper import controlcenterutils
+from helper.controlcenterutils import ControlCenterUtils
 
 
 logger = logging.getLogger(__name__)
@@ -70,8 +70,11 @@ class CreateAP(graphene.Mutation):
     @staticmethod
     def mutate(self, info, macaddress, wifilanserverid ,wifilancustomerid, wifilanlocationid, wifilanapid):
         try:
-            '''response = ControlCenterUtils.addAccessPointInControlCenter(macaddress,wifilanserverid)
-            if response:'''
+            #controlcenterutils = ControlCenterUtils();
+            response = ControlCenterUtils.addAccessPointInControlCenter(self,macaddress)
+            print("respone :: ", response);
+
+            '''if response:'''
 
             ap = AP( macaddress=macaddress ,wifilanserverid=wifilanserverid , wifilancustomerid=wifilancustomerid , wifilanlocationid=wifilanlocationid, wifilanapid=wifilanapid)
 
