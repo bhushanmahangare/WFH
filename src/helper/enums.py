@@ -6,12 +6,16 @@ from enum import IntEnum, Enum
 @return return Enum class
 @description Enum declartions
 '''
-class CustomerTypes(Enum):
-    SUPERADMIN = 'SUPER ADMIN' # This user like Superadmin in wifilan 
-    ITADMIN = 'IT ADMIN'       # This user like customers in wifilan
-    MANAGER = 'MANAGER'         # This user like resellers in wifilan
-    SUBSCRIBER = 'SUBSCRIBER'   # This is new login method to end customer who used WFH solutions
 
+class CustomerTypes(Enum):
+        ''' Super admin 1 
+            Account admin 2
+            Manger admin 3
+            subscriber   4'''
+        SUPERADMIN = 1              # This user like Superadmin in wifilan 
+        ITADMIN = 2                 # This user like customers in wifilan Or Account admin
+        MANAGER = 3                 # This user like resellers in wifilan
+        SUBSCRIBER = 4              # This is new login method to end customer who used WFH solutions
 
 class TimeUnits(IntEnum):
     SECOND = 1

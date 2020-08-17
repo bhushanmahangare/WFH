@@ -53,18 +53,26 @@ class ControlCenterUtils():
         except Exception as e:
             print("Cannot decrypt datas...")
             print(e)"""
+
        #encryptedApData = openssl_encrypt(json_encode($apData) , "aes128" , WIFILAN_SERVER_AUTH_KEY);
+        
+        
+        
         encryptedApData = ""
         print("data in function",macaddress, wifilanServerId)
 
         postData = {
             'callingserver' : 'wifilan',
             'serverid' : wifilanServerId,
-            'data' : encryptedApData,
+            'data' : apData,
         }
         
-        controlCenterResponse = self.handleControlCenterAPICall(postData);
-        
+        controlCenterResponse = ControlCenterUtils.handleControlCenterAPICall(self,postData);
+        controlCenterResponse = {
+            'status' : "success",
+            'message' : "Access Point already present"
+        }
+
         if(controlCenterResponse['status'] == 'success'):
             return True
         else:
@@ -80,8 +88,12 @@ class ControlCenterUtils():
         
         url = getattr(settings, 'CONTROL_CENTER_URL')
 
+        print('ControlCenterAPICall dastata url',url)
+            
         postString = urllib.parse.urlencode(postData)
         headers = { 'Content-Type':'application/json' }
+
+        print('post string data',postString)
 
         try:
             response = requests.get(url)

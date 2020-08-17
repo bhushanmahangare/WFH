@@ -4,8 +4,12 @@ import logging
 # GENERAL DJANGO IMPORTS
 from django.core.exceptions import ValidationError
 
+
 # GRAPHENE IMPORTS
+from graphene import Node
 from graphene_django.types import DjangoObjectType
+from graphene_django.filter import DjangoFilterConnectionField
+
 
 # PROJECT IMPORTS
 from smartap.models import AP
@@ -29,9 +33,8 @@ class APType(DjangoObjectType):
     class Meta:
         model = AP
 
-
 class Query(object):
-
+    
     ap = graphene.Field(
         APType,
         id = graphene.Int(),
@@ -49,7 +52,21 @@ class Query(object):
 
     def resolve_all_aps(self, info, **kwargs):
         return AP.objects.all()
-        
+
+
+'''class APNode(DjangoObjectType):
+    class Meta:
+        model = AP
+        interfaces = (Node,)
+        filter_fileds = {
+            "macaddress" : [ "exact" , "icontanins" , "istartswith", ],
+            "createdon" : ["exact"],
+        }
+class Query(object):
+    ap = Node.Field(APNode)
+    all_aps = DjangoFilterConnectionField(APNode)'''
+
+
 
 class CreateAP(graphene.Mutation):
     
@@ -71,18 +88,24 @@ class CreateAP(graphene.Mutation):
     def mutate(self, info, macaddress, wifilanserverid ,wifilancustomerid, wifilanlocationid, wifilanapid):
         try:
             #controlcenterutils = ControlCenterUtils();
-            response = ControlCenterUtils.addAccessPointInControlCenter(self,macaddress)
-            print("respone :: ", response);
+            controlCenterStatus = ControlCenterUtils.addAccessPointInControlCenter(self,macaddress)
+            print("respone :: ", controlCenterStatus);
 
-            '''if response:'''
+            if controlCenterStatus == True :
+                ap = AP( macaddress=macaddress ,wifilanserverid=wifilanserverid , wifilancustomerid=wifilancustomerid , wifilanlocationid=wifilanlocationid, wifilanapid=wifilanapid)
+                
+                # Save data to Database
+                ap.save() 
 
-            ap = AP( macaddress=macaddress ,wifilanserverid=wifilanserverid , wifilancustomerid=wifilancustomerid , wifilanlocationid=wifilanlocationid, wifilanapid=wifilanapid)
+                return CreateAP(ap=ap)
+                
+            else:
+                print("Error");
 
-            # Save data to Database
-            ap.save() 
             
             # Notice we return an instanace of this mutation
-            return CreateAP(ap=ap)
+
+                return CreateAP(ap=controlCenterStatus)
 
         except ValidationError as e : 
             return CreateAP(ap=None, errors=getErrors(e))
@@ -90,4 +113,4 @@ class CreateAP(graphene.Mutation):
         
 class Mutation(graphene.ObjectType):
 
-    Create_AP_link = CreateAP.Field()
+    Create_AP_link = CreateAP.Field() 

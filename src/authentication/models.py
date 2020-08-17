@@ -41,7 +41,8 @@ class AdmAccount(AbstractUser):
 
     role = models.CharField(max_length=255)
     account_name = models.CharField(max_length=255)
-    email = models.EmailField(blank=True, null=True)
+    email = models.EmailField( unique=True )
+    customer_type = models.CharField(max_length=20, choices=[(ctype.value, ctype.name) for ctype in enums.CustomerTypes])
     customer = models.ForeignKey(
             AdmCustomer,
             on_delete=models.CASCADE
@@ -52,3 +53,4 @@ class AdmAccount(AbstractUser):
 
     def __str__(self):
         return self.username
+
