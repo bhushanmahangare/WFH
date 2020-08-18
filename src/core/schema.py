@@ -19,6 +19,7 @@ class Query(
 
 class Mutation( 
     authentication.schema.Mutation, 
+    network.schema.Mutation,
     smartap.schema.Mutation,  
     graphene.ObjectType     ):
     

@@ -1,7 +1,7 @@
 from enum import IntEnum, Enum
 
 '''
-@param 
+@param  
 @author Bhushan Mahangare
 @return return Enum class
 @description Enum declartions
