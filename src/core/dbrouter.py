@@ -14,12 +14,13 @@ class DBRouter:
         else:
             return 'default'
 
-    def allow_relation(self, obj1, obj2, **hints):
-        if obj1._meta.app_label == 'smartap' or obj2._meta.app_label == 'smartap':
-            return True
-        return False
 
-    def allow_migrate(self, db, app_label, model_name=None, **hints):
-        if app_label == 'smartap':
-            return db == 'smartap'
-        return None
+    #def allow_relation(self, obj1, obj2, **hints):
+#        if obj1._meta.app_label == 'smartap' or obj2._meta.app_label == 'smartap':
+ #           return True
+  #      return False
+
+   # def allow_migrate(self, db, app_label, model_name=None, **hints):
+    #    if app_label == 'smartap':
+     #       return db == 'smartap'
+      #  return None

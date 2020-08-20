@@ -376,3 +376,80 @@ mutation{
     }
   }
 }
+
+
+
+
+
+
+
+mutation{
+  CreateLocationLink(
+    locationData : {
+    	autologinenable : true
+      automacregister : true
+      autologinvalidity : 2
+      autologinvalidityUnit : 1
+      name : "Testing Location"
+      hotspotenable : false
+      interiminterval : 600
+      customerid : 2
+    }
+  ){
+    location{
+      id
+      name
+    }
+  }
+}
+
+
+{
+  "data": {
+    "CreateLocationLink": {
+      "location": {
+        "id": "5",
+        "name": "Testing Location"
+      }
+    }
+  }
+}
+
+
+
+mutation{
+  CreateLocationLink(
+    locationData : {
+    	autologinenable : true
+      automacregister : true
+      autologinvalidity : 2
+      autologinvalidityUnit : 1
+      name : "Tes"
+      hotspotenable : false
+      interiminterval : 600
+      customerid : 1
+    }
+  ){
+    location{
+      id
+      name
+    }
+    errors{
+      id
+      name
+    }
+  }
+}
+
+
+{
+  "data": {
+    "CreateLocationLink": {
+      "location": null,
+      "errors": {
+        "id": null,
+        "name": "Name is too short."
+      }
+    }
+  }
+}
