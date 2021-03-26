@@ -19,7 +19,7 @@ pkg-resources==0.0.0
 promise==2.3
 PyJWT==1.7.1
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.24.0
 Rx==1.6.1
 shellescape==3.8.1
