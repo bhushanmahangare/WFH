@@ -27,4 +27,4 @@ singledispatch==3.4.0.3
 six==1.15.0
 sqlparse==0.3.1
 Unidecode==1.1.1
-urllib3==1.25.10
+urllib3==1.26.5
